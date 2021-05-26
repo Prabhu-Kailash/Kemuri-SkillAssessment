@@ -1,0 +1,149 @@
+
+html {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background-color: #60a9ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Main Layout */
+
+.panel {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px 25px;
+    width: 100%;
+    max-width: 760px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+    box-shadow: gray;
+}
+
+/* SVG Icon */
+
+.img {
+    margin-bottom: 25px;
+    max-width: 100%;
+}
+
+/* Upload button styling */
+
+.new-button {
+    display: inline-block;
+    padding: 8px 12px; 
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #60a9ff;
+    color: white;
+    text-transform: capitalize;
+}
+
+input[type="file"] {
+    position: absolute;
+    z-index: -1;
+    top: 6px;
+    left: 0;
+    color: rgb(153,153,153);
+}
+
+.button-wrap {
+    position: relative;
+    margin: 10px 0;
+}
+
+p {
+    text-transform: capitalize;
+    font-size: small;
+}
+
+/* Submit button styling */
+
+.button-submit {
+    background-color: white;
+    border: 1px solid #348efe;
+    border-radius: 10px;
+    color: #348efe;
+    display: inline-block;
+    padding: 10px 25px;
+    text-decoration: none;
+    margin: 15px 0;
+}
+
+.button-submit:hover, .button-submit:active {
+    background-color: #e1f1ff;
+}
+
+.date, .select-parent {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Select styling */
+
+select {
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: #60a9ff;
+    background-image: none;
+}
+
+.select {
+    position: relative;
+    display: flex;
+    width: 150px;
+    height: 48px;
+    line-height: 3;
+    background: #e1f1ff;
+    overflow: hidden;
+    border-radius: 5px;
+    text-align: center;
+}
+
+select {
+    flex: 1;
+    padding: 0 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: #60a9ff;
+    cursor: pointer;
+    pointer-events: none;
+    transition: .25s all ease;
+}
+
+.select:hover::after {
+    color: black;
+}
+
+.select {
+    color: white;
+}
+
+label {
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+input,
+label {
+    margin: 8px 0;
+}
