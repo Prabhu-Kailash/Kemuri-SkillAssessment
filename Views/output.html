@@ -13,51 +13,30 @@
 		<div>
 			<svg id="Capa_1" enable-background="new 0 0 510.948 510.948" height="50" viewBox="0 0 510.948 510.948" width="50" xmlns="http://www.w3.org/2000/svg"><g><g><path d="m130.276 441.167h-68.04v-122.044c0-3.18 2.578-5.759 5.759-5.759h56.523c3.18 0 5.759 2.578 5.759 5.759v122.044z" fill="#9de5d1"/><path d="m234.065 441.167h-68.04v-175.722c0-3.18 2.578-5.759 5.759-5.759h56.523c3.18 0 5.759 2.578 5.759 5.759v175.722z" fill="#ee878a"/><path d="m337.854 441.167h-68.04v-218.192c0-3.18 2.578-5.759 5.759-5.759h56.523c3.18 0 5.759 2.578 5.759 5.759v218.192z" fill="#fbe88c"/><path d="m441.642 441.167h-68.04v-283.06c0-3.18 2.578-5.759 5.759-5.759h56.523c3.18 0 5.759 2.578 5.759 5.759v283.06z" fill="#cfeffc"/><path d="m88.059 392.11v-78.746h-20.064c-3.18 0-5.759 2.578-5.759 5.759v122.044h68.04v-20.684h-13.843c-15.67.001-28.374-12.703-28.374-28.373z" fill="#82dec5"/><path d="m191.848 388.825v-129.139h-20.064c-3.18 0-5.759 2.578-5.759 5.759v175.722h68.04v-20.684h-10.558c-17.485.001-31.659-14.174-31.659-31.658z" fill="#ec6e73"/><path d="m295.637 382.843v-165.627h-20.064c-3.18 0-5.759 2.578-5.759 5.759v218.193h68.04v-20.684h-4.576c-20.789 0-37.641-16.853-37.641-37.641z" fill="#fbe372"/><path d="m399.425 378.267v-225.919h-20.064c-3.18 0-5.759 2.578-5.759 5.759v283.06h68.04v-20.684c-23.315.001-42.217-18.901-42.217-42.216z" fill="#a9e4f9"/><path d="m401.658 77.309-3.774-29.525c-.252-1.973-1.278-3.765-2.852-4.982-1.573-1.216-3.563-1.76-5.539-1.506l-29.525 3.774c-4.108.525-7.014 4.282-6.488 8.391.525 4.108 4.278 7.008 8.391 6.488l11.916-1.523c-28.995 44.265-68.503 81.129-114.75 106.953-48.875 27.292-104.297 41.718-160.275 41.718h-36.526c-4.142 0-7.5 3.358-7.5 7.5s3.358 7.5 7.5 7.5h36.525c58.532 0 116.483-15.084 167.588-43.621 47.839-26.713 88.787-64.719 119.013-110.343l1.416 11.079c.484 3.786 3.711 6.55 7.43 6.55.317 0 .638-.02.96-.062 4.11-.526 7.015-4.283 6.49-8.391z" fill="#ee878a"/></g><path d="m508.751 435.864-21.047-21.047c-2.929-2.929-7.678-2.929-10.606 0-2.929 2.929-2.929 7.678 0 10.606l8.244 8.244h-449.295v-360.813l8.244 8.244c1.464 1.464 3.384 2.197 5.303 2.197s3.839-.732 5.303-2.197c2.929-2.929 2.929-7.678 0-10.606l-21.047-21.048c-2.929-2.929-7.678-2.929-10.606 0l-21.047 21.047c-2.929 2.929-2.929 7.678 0 10.606 2.929 2.929 7.678 2.929 10.606 0l8.244-8.244v360.813h-12.1c-4.142 0-7.5 3.358-7.5 7.5s3.358 7.5 7.5 7.5h476.394l-8.244 8.244c-2.929 2.929-2.929 7.678 0 10.606 1.464 1.464 3.384 2.197 5.303 2.197s3.839-.732 5.303-2.197l21.047-21.047c2.93-2.927 2.93-7.676.001-10.605z" fill="#b3adb5"/></g></svg>
 		</div>
-		<h5>Results</h5>
+		<h5>Output</h5>
 		<form action="/submit" method="POST">
 			<div class="date">
 				<div>
 					<label for="start">Start date : </label>
-					<input type="date" id="start" name="user[start]">
+					<input type="date" id="start" name="start" disable=false>
 				</div>
 				<p>to</p>
 				<div>
 					<label for="end">End date : </label>
-					<input type="date" id="end" name="user[end]">
+					<input type="date" id="end" name="end" disable=false>
 				</div>
 			</div>
 			<div class="select-parent">
 				<div class="select">
-					<select name="user[stock]" id="slct">
+					<select name="stock" id="slct">
 					</select>
 				</div>
 			</div>
 			<div>
-				<button type="submit" class="button-submit" id="btn-upload-csv">SUBMIT</a>
+				<button type="submit" class="button-submit" id="btn" disable=false>SUBMIT</a>
 			</div>
 		</form>
 	</div>
-	<script>
-
-		function createElements(items) {
-			for (let val of items) {
-				let option = document.createElement("option");
-				option.innerHTML = val;
-				option.value = val;
-				document.getElementById("slct").appendChild(option);
-			}
-		}
-
-		async function getData(url){
-			const response = await fetch(url);
-			const data = response.json();
-			return data;
-		}
-		
-		document.onload = (async () => {
-			const items = await getData("/get");
-			createElements(items)
-		})();
-	</script>
+	<script src="./Public/JS/output.js"></script>
 </body>
 </html>

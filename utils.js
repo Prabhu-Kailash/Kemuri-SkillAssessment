@@ -4,6 +4,11 @@ function convertToJson(data) {
     return JSON.stringify(data);
 }
 
+function dateString(date) {
+    dArr = date.split("-");
+    return (dArr.length > 1) ? (dArr[2]+ "-" +dArr[1]+ "-" +dArr[0]) : dArr[0];
+}
+
 function writeDataToFile(filename, content) {
     writeFileSync(filename, convertToJson(content), 'utf8', (err) => {
         if(err) {
@@ -30,5 +35,6 @@ function postDBData(req) {
 
 module.exports = {
     writeDataToFile,
-    postDBData
+    postDBData,
+    dateString
 }
