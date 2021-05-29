@@ -31,7 +31,8 @@ Available date list: ["07-02-2020", "09-02-2020", "10-02-2020", "15-02-2020"]
 Price list date:     [       320,        330,         340,           350    ]
 Assumes stock value of date "10-02-2020"             ^^^^^^
 
-If selected range is "12-02-2020" to "15-02-2020", Stock value for dates missing date in the list in this case "13-02-2020" & "14-02-2020" will be assumed from stock value from "12-02-2020" (nearest selected predecessor).
+If selected range is "12-02-2020" to "15-02-2020", Stock value for dates missing date in the list.
+In this case "13-02-2020" & "14-02-2020" will be assumed from stock value from "12-02-2020" (nearest selected predecessor).
 
 For selected range "12-02-2020" to "15-02-2020":-
 
