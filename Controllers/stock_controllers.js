@@ -1,12 +1,11 @@
-const { postDBData, dateString } = require('../utils');
-const { Stock, StockMath } = require('./MainLogic');
+const { Stock, StockMath, Utility } = require('../Models/StockModel');
 const { readFileSync } = require('fs');
 const { join } = require('path');
 
 /**
- * @param {Request} req request from the client
- * @param {Response} res response from the server
- * @description Gets to home page
+ * @param {Request} req Request from the client.
+ * @param {Response} res Response from the server.
+ * @description Gets to home page.
  * @route /
  * @method GET
  */ 
@@ -21,17 +20,18 @@ function getToHome(req, res) {
 }
 
 /**
- * @param {Request} req request from the client
- * @param {Response} res response from the server
- * @param {Array} storage Array of stock objects
- * @description Post form data to route /submit
+ * @param {Request} req Request from the client.
+ * @param {Response} res Response from the server.
+ * @param {Array} storage Array of stock objects.
+ * @description Post form data to route /submit.
  * @route /submit
  * @method POST
  */ 
 async function form(req, res, storage) {
     try {
-        let data = await postDBData(req);
-        let params = data.split('&').map(ele => ele.split('=')[1]).map(date => dateString(date));
+        let utility = new Utility();
+        let data = await utility.postDBData(req);
+        let params = data.split('&').map(ele => ele.split('=')[1]).map(date => utility.dateString(date));
         let stocks = new Stock(await storage);
         let filtered_Array = Stock.sort_obj(stocks.data).filter(item => item.stock_name.toUpperCase() == params[2]);
         let stockObj = filtered_Array.map(function(item) {
@@ -53,15 +53,16 @@ async function form(req, res, storage) {
 }
 
 /**
- * @param {Request} req request from the client
- * @param {Response} res response from the server
- * @description Post Data to DB (Server Storage)
+ * @param {Request} req Request from the client.
+ * @param {Response} res Response from the server.
+ * @description Post Data to DB (Server Storage).
  * @route /post
  * @method POST
  */ 
  async function writeToDB(req, res) {
     try {
-        const body = await postDBData(req);
+        let utility = new Utility;
+        const body = await utility.postDBData(req);
         res.writeHead(200, { 'Content-Type': 'text/html' });
         res.end(readFileSync(join(__dirname, '../Views/output.html')));
         return JSON.parse(body);
@@ -72,10 +73,10 @@ async function form(req, res, storage) {
 }
 
 /**
- * @param {Request} req request from the client
- * @param {Response} res response from the server
- * @param {Array} data Array of buy and sell stocks
- * @description Gets Stocks from serverStorage
+ * @param {Request} req Request from the client.
+ * @param {Response} res Response from the server.
+ * @param {Array} data Array of buy and sell stocks.
+ * @description Gets Stocks from serverStorage.
  * @route /submit
  * @method GET
  */ 
@@ -96,10 +97,10 @@ async function readDatafromForm(req, res, data) {
 }
 
 /**
- * @param {Request} req request from the client
- * @param {Response} res response from the server
- * @param {Array} data Array of stock objects
- * @description Gets Stocks from serverStorage
+ * @param {Request} req Request from the client.
+ * @param {Response} res Response from the server.
+ * @param {Array} data Array of stock objects.
+ * @description Gets Stocks from serverStorage.
  * @route /get
  * @method GET
  */ 
@@ -110,11 +111,12 @@ async function readDatafromDB(req, res, data) {
             res.writeHead(404, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify({ error: 'No Stock found' }));
         } else {
+            let utility = new Utility();
             let stock_names = [...new Set(return_object.map(ele => ele.stock_name.toUpperCase()))];
             let sortedObj = Stock.sort_obj(return_object);
-            let [start, end] = [dateString(sortedObj[0].date), dateString(sortedObj[sortedObj.length - 1].date)];
+            let [start, end] = [utility.dateString(sortedObj[0].date), utility.dateString(sortedObj[sortedObj.length - 1].date)];
             res.writeHead(200, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify({stock:stock_names, start, end}));
+            res.end(JSON.stringify({ stock:stock_names, start, end }));
         }
     } catch (error) {
         res.writeHead(404, { 'Content-Type': 'application/json' });

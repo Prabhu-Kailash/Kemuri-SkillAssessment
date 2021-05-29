@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000;
 let serverStorage, userForm;
 
 const server = createServer(async (req, res) => {
-    
+    // Routes
     switch (true) {
         case (req.url == '/' && req.method == 'GET') :
             getToHome(req, res);
@@ -19,15 +19,15 @@ const server = createServer(async (req, res) => {
         case (req.url == '/get' && req.method == 'GET') :
             readDatafromDB(req, res, serverStorage);
             break;
-        case (req.url == '/post' && req.method == 'GET') :
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(readFileSync(join(__dirname, './Views/output.html')));
-            break;
         case (req.url == '/submit' && req.method == 'POST') :
             userForm = await form(req, res, serverStorage);
             break;
         case (req.url == '/getData' && req.method == 'GET') :
             readDatafromForm(req, res, userForm);
+            break;
+        case (req.url == '/post' && req.method == 'GET') :
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(readFileSync(join(__dirname, './Views/output.html')));
             break;
         case (req.url == '/submit' && req.method == 'GET') :
             res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -44,6 +44,10 @@ const server = createServer(async (req, res) => {
         case (req.url.indexOf('output.js') != -1 && req.method == 'GET') :
             res.writeHead(200, { 'Content-Type': 'text/javascript' });
             res.end(readFileSync(join(__dirname, './Public/JS/output.js')));
+            break;
+        case (req.url.indexOf('results.js') != -1 && req.method == 'GET') :
+            res.writeHead(200, { 'Content-Type': 'text/javascript' });
+            res.end(readFileSync(join(__dirname, './Public/JS/results.js')));
             break;
         case (req.url.indexOf('frontendUtil.js') != -1 && req.method == 'GET') :
             res.writeHead(200, { 'Content-Type': 'text/javascript' });

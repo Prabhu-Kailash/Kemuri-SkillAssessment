@@ -162,8 +162,42 @@ class StockMath {
     }
 }
 
+class Utility {
+    
+    /**
+     * @param {string} date Date string.
+     * @description Changes the format of date from YYYY-MM-DD (which is a standard in browser frontend) to DD-MM-YYYY.
+     * @returns {string} Date string in DD-MM-YYYY format.
+     */ 
+    dateString(date) {
+        let dArr = date.split("-");
+        return (dArr.length > 1) ? (dArr[2]+ "-" +dArr[1]+ "-" +dArr[0]) : dArr[0];
+    }
+    
+    /**
+     * @param {Request} req Request from client.
+     * @description Get's the payload/blob sent from client side and returns it as string.
+     * @returns {string} Returns converted blob to string.
+     */ 
+    postDBData(req) {
+        return new Promise((resolve, reject) => {
+            try {
+                let body = new String();
+                req.on('data', (blob) => {
+                    body += blob.toString();
+                });
+                req.on('end', () => {
+                    resolve(body);
+                });
+            } catch (error) {
+                reject(err);
+            }
+        });
+    }
+}
 
 module.exports = {
     Stock,
-    StockMath
+    StockMath,
+    Utility
 }
