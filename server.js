@@ -53,6 +53,10 @@ const server = createServer(async (req, res) => {
             res.writeHead(200, { 'Content-Type': 'text/javascript' });
             res.end(readFileSync(join(__dirname, './Public/JS/frontendUtil.js')));
             break;
+        case (req.url.indexOf('favicon.ico') != -1 && req.method == 'GET') :
+            res.writeHead(200, { 'Content-Type': 'image/svg+xml' });
+            res.end(readFileSync(join(__dirname, './Public/SVG/favicon.ico')));
+            break;
         default : 
             res.writeHead(200, { 'Content-Type': 'text/html' });
             res.end(readFileSync(join(__dirname, './Views/error.html')));

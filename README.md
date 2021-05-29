@@ -1,9 +1,9 @@
 # Stock calculator - With Vanilla Node JS
-#### Calculates when to to buy and sell stocks based on input (CSV) file with headers [ date, stock_name, price ]. No frontend/backend frameworks been used in making of this application.
+#### Calculates when to to buy and sell stocks based on input (CSV) file with headers [ date, stock_name, price ]. No frontend/backend frameworks been used in making of this web application.
 
 ### Libraries/Modules :-
 * Papa Parse - frontend library used to parse CSV file to JSON from client end.
-* In build Node libraries (http, fs, path) used to create this web application.
+* In built Node libraries (http, fs, path) used to create this responsive web application.
 
 ### Assumptions/Constraints :-
 ---
