@@ -9,14 +9,14 @@
 ### Continous deployment to self hosted VM :-
 ---
 
-##### Automated building with GitHub Actions and DigitalOcean Droplet on every push to GitHub.
+Automated building with GitHub Actions and DigitalOcean Droplet on every push to GitHub.
 
 Site - https://kemuriskilltest-kailash.website/
 
 ### Functional testing using Selenium (Python) :-
 ---
 
-##### Website's functionality been extensively tested with multiple automated tested cases written using Selenium and Python's unittest framework.
+Website's functionality been extensively tested with multiple automated tested cases written using Selenium and Python's unittest framework.
 
 ### Assumptions/Constraints :-
 ---
@@ -31,7 +31,7 @@ Site - https://kemuriskilltest-kailash.website/
 * Input CSV shouldn't be empty (shouldn't have empty rows as it would cause keys issue).
 
 #### Assumptions - 
-##### Standard Deviation (**SD**) & Mean (**M**) is calculated for selected range of dates, assuming if the given range 12-02-2020 which doesn't have a stock listed in input. It will assign a nearest predecessor value for the stock and assumes the same for remaining dates.
+Standard Deviation (**SD**) & Mean (**M**) is calculated for selected range of dates, assuming if the given range 12-02-2020 which doesn't have a stock listed in input. It will assign a nearest predecessor value for the stock and assumes the same for remaining dates.
 
 ```
 Example :-
