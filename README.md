@@ -52,7 +52,8 @@ For selected range "12-02-2020" to "15-02-2020":-
 Mean is calculated = 340 + 340 + 340 + 350 / 4 (equals to 342.5)
 SD is calculated   = Square Root of (((340 - 342.5)2 + (340 - 342.5)2 + (340 - 342.5)2 + (350 - 342.5)2)/4) (equals to 4.33)
 
-Max profit - when to buy more (200) stocks is calculated by finding the maximum and minimum prices of the selected stock between the user selected date range with constraints of minimum prices date should come before the maximum prices date whose difference should be high.
+Max profit - when to buy more (200) stocks is calculated by finding the maximum and minimum prices of the selected stock,
+between the user selected date range with constraints of minimum prices date should come before the maximum prices date whose difference should be high.
 
 ["350", "314", "320", "319", "323", "313", "330"] --> min (313) and max (330).
 ["7", "6", "1", "2"] --> min (1) and max(2).
